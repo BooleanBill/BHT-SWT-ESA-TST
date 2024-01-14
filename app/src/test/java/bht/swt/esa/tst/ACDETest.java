@@ -3,6 +3,7 @@ package bht.swt.esa.tst;
 import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.Test;
+import java.util.Random;
 
 import bht.swt.esa.tst.ACDE.NoNameException;
 import bht.swt.esa.tst.ACDE.WeirdNameException;
@@ -28,7 +29,26 @@ public class ACDETest {
         assertTrue(acde.sub(25615, 56) == 25559);
         assertTrue(acde.sub(Integer.MAX_VALUE, -1) == Integer.MIN_VALUE);
         assertTrue(acde.sub(Integer.MIN_VALUE, 1) == Integer.MAX_VALUE);
+        assertFalse(acde.sub(1, 2) == 1);
         assertEquals(0, acde.sub(0, 0));
+    }
+
+    @Test
+    void testGetEmptyString() {
+        ACDE acde = new ACDE();
+        assertEquals("", acde.getEmptyString());
+        assertTrue(acde.getEmptyString().isEmpty());
+    }
+
+    @Test
+    void testMul() {
+        Random random = new Random();
+        int a = random.nextInt();
+        ACDE acde = new ACDE();
+        assertTrue(acde.mul(1, 2) == 2);
+        assertFalse(acde.mul(a, 0) != 0);
+        assertEquals(20, acde.mul(4, 5));
+        assertEquals(-30, acde.mul(5, -6));
     }
 
     @Test
