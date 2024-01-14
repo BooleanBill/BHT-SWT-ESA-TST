@@ -8,8 +8,15 @@ import java.util.Map;
  */
 public class ACDE {
 
-    private static final Map<Character, Integer> ROMAN = Map.of(
+    private static final Map<Character, Integer> romanMap = Map.of(
             'I', 1, 'V', 5, 'X', 10, 'L', 50, 'C', 100, 'D', 500, 'M', 1000);
+
+    // Invalid numeral combinations
+    private static final String[] invalidCombos = { "VV", "LL", "DD", "IIII", "XXXX", "CCCC", "MMMM", "IM", "XM", "VM",
+            "LM", "DM",
+            "ID", "XD", "VD", "LD", "DD", "IC", "XCX", "VC", "LC", "DC", "IL", "VL", "LL", "DL", "ML", "IIV", "XIX",
+            "VX", "LX", "CX", "DX", "MX", "IVV", "IXX", "VX", "LX", "CX", "DX", "MX", "IVI", "IXI", "VX", "LX", "CX",
+            "DX", "MX", "IVI", "IXI", "VX", "LX", "CX", "DX", "MX", "IVI", "IXI", "VX", "LX", "CX", "DX", "MX", "IVI" };
 
     /** a constructor that runs the methods */
     public ACDE() {
@@ -125,32 +132,39 @@ public class ACDE {
      * A custom exception for empty names.
      */
     public static Integer romanNumeralsToNumbers(String string) throws IllegalArgumentException {
+
+        if (string.length() == 0 || string.trim().isEmpty()) {
+            throw new IllegalArgumentException("Empty string!");
+        }
+
         for (char c : string.toCharArray()) {
-            if (!ROMAN.containsKey(c)) {
+            if (!romanMap.containsKey(c)) {
                 throw new IllegalArgumentException("Invalid Roman numeral: " + c);
             }
         }
 
-        // check for illegal numeral combinations
-        if (string.contains("VV") || string.contains("LL") || string.contains("DD") || string.contains("IIII")
-                || string.contains("XXXX") || string.contains("CCCC") || string.contains("MMMM")
-                || string.contains("IVI")) {
-            throw new IllegalArgumentException("Invalid Roman numeral: " + string);
+        for (String combo : ACDE.invalidCombos) {
+            if (string.equals(combo)) {
+                throw new IllegalArgumentException("Invalid Roman numeral: " + string);
+            }
         }
 
         int result = 0;
+        int i = 0;
 
-        for (int i = 0; i < string.length(); i++) {
-            int current = ROMAN.get(string.charAt(i));
-            int next = i + 1 < string.length() ? ROMAN.get(string.charAt(i + 1)) : 0;
+        while (i < string.length()) {
+            int current = romanMap.get(string.charAt(i));
+            int next = i + 1 < string.length() ? romanMap.get(string.charAt(i + 1)) : 0;
+
             if (current >= next) {
                 result += current;
+                i++;
             } else {
-                result -= current;
+                result += next - current;
+                i += 2;
             }
         }
 
         return result;
-
     }
 }

@@ -7,6 +7,8 @@ public class App {
 
     public static void main(String[] args) {
         ACDE acde = new ACDE();
-        System.out.println(acde.div(1, 0));
+        
+        int a = ACDE.romanNumeralsToNumbers("LXIX");
+        System.out.println(a);
     }
 }

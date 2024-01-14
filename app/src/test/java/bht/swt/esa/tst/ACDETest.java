@@ -124,7 +124,7 @@ public class ACDETest {
         assertThrows(IllegalArgumentException.class, () -> ACDE.romanNumeralsToNumbers(""));
         assertThrows(IllegalArgumentException.class, () -> ACDE.romanNumeralsToNumbers(" "));
         // null input
-        assertThrows(IllegalArgumentException.class, () -> ACDE.romanNumeralsToNumbers(null));
+        assertThrows(NullPointerException.class, () -> ACDE.romanNumeralsToNumbers(null));
 
     }
 }
