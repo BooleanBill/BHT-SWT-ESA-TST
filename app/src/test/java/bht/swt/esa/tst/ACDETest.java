@@ -39,6 +39,7 @@ public class ACDETest {
         assertEquals("", acde.getEmptyString());
         assertTrue(acde.getEmptyString().isEmpty());
         assertFalse(!acde.getEmptyString().isBlank());
+        assertNotNull(acde.getEmptyString());
     }
 
     @Test
@@ -66,8 +67,14 @@ public class ACDETest {
     void testJudgeName() {
         ACDE acde = new ACDE();
         assertTrue(acde.scoreName("Alice") >= 0);
+        assertEquals(13, acde.scoreName("Martin"));
         assertThrows(WeirdNameException.class, () -> acde.scoreName("X Æ A-12"));
         assertThrows(NoNameException.class, () -> acde.scoreName(""));
+
+    }
+
+    @Test
+    void testRomanNumeralsToNumbers(){
 
     }
 }
