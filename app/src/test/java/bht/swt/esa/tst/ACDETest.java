@@ -74,7 +74,57 @@ public class ACDETest {
     }
 
     @Test
-    void testRomanNumeralsToNumbers(){
+    void testRomanNumeralsToNumbers() {
+        // the basics
+        assertEquals(1, ACDE.romanNumeralsToNumbers("I"));
+        assertEquals(5, ACDE.romanNumeralsToNumbers("V"));
+        assertEquals(10, ACDE.romanNumeralsToNumbers("X"));
+        assertEquals(50, ACDE.romanNumeralsToNumbers("L"));
+        assertEquals(100, ACDE.romanNumeralsToNumbers("C"));
+        assertEquals(500, ACDE.romanNumeralsToNumbers("D"));
+        assertEquals(1000, ACDE.romanNumeralsToNumbers("M"));
+        // a bit trickier: combinations of the basics
+        assertEquals(2, ACDE.romanNumeralsToNumbers("II"));
+        assertEquals(3, ACDE.romanNumeralsToNumbers("III"));
+        assertEquals(6, ACDE.romanNumeralsToNumbers("VI"));
+        assertEquals(7, ACDE.romanNumeralsToNumbers("VII"));
+        assertEquals(8, ACDE.romanNumeralsToNumbers("VIII"));
+        assertEquals(11, ACDE.romanNumeralsToNumbers("XI"));
+        assertEquals(12, ACDE.romanNumeralsToNumbers("XII"));
+        assertEquals(48, ACDE.romanNumeralsToNumbers("XLVIII"));
+        assertEquals(69, ACDE.romanNumeralsToNumbers("LXIX"));
+        assertEquals(99, ACDE.romanNumeralsToNumbers("XCIX"));
+        assertEquals(101, ACDE.romanNumeralsToNumbers("CI"));
+        assertEquals(202, ACDE.romanNumeralsToNumbers("CCII"));
+        assertEquals(499, ACDE.romanNumeralsToNumbers("CDXCIX"));
+        assertEquals(549, ACDE.romanNumeralsToNumbers("DXLIX"));
+        assertEquals(999, ACDE.romanNumeralsToNumbers("CMXCIX"));
+        assertEquals(1001, ACDE.romanNumeralsToNumbers("MI"));
+        assertEquals(2002, ACDE.romanNumeralsToNumbers("MMII"));
+        // some edge cases
+        assertEquals(4, ACDE.romanNumeralsToNumbers("IV"));
+        assertEquals(9, ACDE.romanNumeralsToNumbers("IX"));
+        assertEquals(40, ACDE.romanNumeralsToNumbers("XL"));
+        assertEquals(90, ACDE.romanNumeralsToNumbers("XC"));
+        assertEquals(400, ACDE.romanNumeralsToNumbers("CD"));
+        // some invalid inputs
+        assertThrows(IllegalArgumentException.class, () -> ACDE.romanNumeralsToNumbers("IIII"));
+        assertThrows(IllegalArgumentException.class, () -> ACDE.romanNumeralsToNumbers("VV"));
+        assertThrows(IllegalArgumentException.class, () -> ACDE.romanNumeralsToNumbers("XXXX"));
+        assertThrows(IllegalArgumentException.class, () -> ACDE.romanNumeralsToNumbers("LL"));
+        assertThrows(IllegalArgumentException.class, () -> ACDE.romanNumeralsToNumbers("CCCC"));
+        assertThrows(IllegalArgumentException.class, () -> ACDE.romanNumeralsToNumbers("DD"));
+        assertThrows(IllegalArgumentException.class, () -> ACDE.romanNumeralsToNumbers("MMMM"));
+        assertThrows(IllegalArgumentException.class, () -> ACDE.romanNumeralsToNumbers("IM"));
+        assertThrows(IllegalArgumentException.class, () -> ACDE.romanNumeralsToNumbers("XM"));
+        // some more invalid inputs that are plain wrong and not even roman numerals
+        assertThrows(IllegalArgumentException.class, () -> ACDE.romanNumeralsToNumbers("ABC"));
+        assertThrows(IllegalArgumentException.class, () -> ACDE.romanNumeralsToNumbers("123"));
+        assertThrows(IllegalArgumentException.class, () -> ACDE.romanNumeralsToNumbers("ölpqiwe"));
+        assertThrows(IllegalArgumentException.class, () -> ACDE.romanNumeralsToNumbers(""));
+        assertThrows(IllegalArgumentException.class, () -> ACDE.romanNumeralsToNumbers(" "));
+        // null input
+        assertThrows(IllegalArgumentException.class, () -> ACDE.romanNumeralsToNumbers(null));
 
     }
 }
