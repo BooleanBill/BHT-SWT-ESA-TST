@@ -38,6 +38,7 @@ public class ACDETest {
         ACDE acde = new ACDE();
         assertEquals("", acde.getEmptyString());
         assertTrue(acde.getEmptyString().isEmpty());
+        assertFalse(!acde.getEmptyString().isBlank());
     }
 
     @Test
