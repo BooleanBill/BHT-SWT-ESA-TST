@@ -72,4 +72,42 @@ public class ACDE {
         return a / b;
     }
 
+    /**
+     * calculates a score from 0 to 100 for a given name, only accepts names with
+     * length > 0 and not
+     * containing numbers or special characters other than spaces and dashes. (Sorry Elon Musk)
+     * 
+     * @param name the name to be scored
+     */
+    public int scoreName(String name) throws Exception {
+        if (name.length() == 0) {
+            throw new NoNameException("There is no name!");
+        }
+        if (!name.matches("[a-zA-Z\\-\\s]+")) {
+            throw new WeirdNameException("Name must not contain numbers or special characters! Get out of here, Elon!");
+        }
+        int score = 0;
+        for (int i = 0; i < name.length(); i++) {
+            score += name.charAt(i);
+        }
+        return score % 101;
+    }
+
+    /**
+     * A custom exception for weird names.
+     */
+    public class WeirdNameException extends Exception {
+        public WeirdNameException(String errorMessage) {
+            super(errorMessage);
+        }
+    }
+
+    /**
+     * A custom exception for empty names.
+     */
+    public class NoNameException extends Exception {
+        public NoNameException(String errorMessage) {
+            super(errorMessage);
+        }
+    }
 }

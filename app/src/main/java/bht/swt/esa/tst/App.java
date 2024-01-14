@@ -4,15 +4,8 @@
 package bht.swt.esa.tst;
 
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
-
-    public static String getJavaVersion() {
-        return System.getProperty("java.version");
-    }
 
     public static void main(String[] args) {
-        ACDE acde = new ACDE();
+
     }
 }
