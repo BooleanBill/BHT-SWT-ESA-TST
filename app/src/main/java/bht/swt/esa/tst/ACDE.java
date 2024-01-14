@@ -25,7 +25,6 @@ public class ACDE {
 
     /**
      * hello world method
-     * s
      * 
      * @param args
      */

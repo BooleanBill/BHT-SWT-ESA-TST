@@ -7,8 +7,12 @@ public class App {
 
     public static void main(String[] args) {
         ACDE acde = new ACDE();
+        TimeBasedAction timeBasedAction = new TimeBasedAction(new TimeProvider());
+        System.out.println(timeBasedAction.greeting());
         
         int a = ACDE.romanNumeralsToNumbers("LXIX");
         System.out.println(a);
+
+
     }
 }
