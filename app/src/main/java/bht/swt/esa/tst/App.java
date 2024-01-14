@@ -6,6 +6,7 @@ package bht.swt.esa.tst;
 public class App {
 
     public static void main(String[] args) {
-
+        ACDE acde = new ACDE();
+        System.out.println(acde.div(1, 0));
     }
 }

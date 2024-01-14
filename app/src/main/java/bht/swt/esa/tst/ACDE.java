@@ -68,18 +68,22 @@ public class ACDE {
      * @param b the divisor
      * @return the quotient of the division
      */
-    public float div(float a, float b) {
+    public float div(float a, float b) throws ArithmeticException {
+        if (b == 0) {
+            throw new ArithmeticException("Division by zero!");
+        }
         return a / b;
     }
 
     /**
+     * 
      * calculates a score from 0 to 100 for a given name, only accepts names with
      * length > 0 and not
      * containing numbers or special characters other than spaces and dashes. (Sorry Elon Musk)
      * 
      * @param name the name to be scored
      */
-    public int scoreName(String name) throws Exception {
+    public int scoreName(String name) throws WeirdNameException, NoNameException {
         if (name.length() == 0) {
             throw new NoNameException("There is no name!");
         }
@@ -96,7 +100,7 @@ public class ACDE {
     /**
      * A custom exception for weird names.
      */
-    public class WeirdNameException extends Exception {
+    public class WeirdNameException extends RuntimeException {
         public WeirdNameException(String errorMessage) {
             super(errorMessage);
         }
@@ -105,7 +109,7 @@ public class ACDE {
     /**
      * A custom exception for empty names.
      */
-    public class NoNameException extends Exception {
+    public class NoNameException extends RuntimeException {
         public NoNameException(String errorMessage) {
             super(errorMessage);
         }
