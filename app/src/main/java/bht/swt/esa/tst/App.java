@@ -8,7 +8,12 @@ public class App {
         return "Hello World!";
     }
 
+    public static String getJavaVersion() {
+        return System.getProperty("java.version");
+    }
+
     public static void main(String[] args) {
         System.out.println(new App().getGreeting());
+        System.out.println("Java version: " + getJavaVersion());
     }
 }

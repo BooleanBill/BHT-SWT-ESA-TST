@@ -7,8 +7,15 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
-    @Test void appHasAGreeting() {
+    @Test
+    void appHasAGreeting() {
         App classUnderTest = new App();
         assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
+    }
+
+    @Test void testGetJavaVersion() {
+        String javaVersion = App.getJavaVersion();
+        assertNotNull(javaVersion, "Java version should not be null");
+        assertTrue(javaVersion.length() > 0, "Java version should not be empty");
     }
 }
