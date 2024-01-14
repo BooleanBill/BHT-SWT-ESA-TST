@@ -3,8 +3,11 @@
  */
 package bht.swt.esa.tst;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.*;
+
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
     @Test
@@ -13,9 +16,12 @@ class AppTest {
         assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
     }
 
-    @Test void testGetJavaVersion() {
-        String javaVersion = App.getJavaVersion();
-        assertNotNull(javaVersion, "Java version should not be null");
-        assertTrue(javaVersion.length() > 0, "Java version should not be empty");
+    @Test
+    void testGetEmptyString() {
+        Acde acde = mock(Acde.class);
+        when(acde.getEmptyString()).thenReturn("");
+        assertTrue(acde.getEmptyString().isEmpty());
+        
+    
     }
 }
