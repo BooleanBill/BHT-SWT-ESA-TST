@@ -129,7 +129,11 @@ public class ACDE {
     }
 
     /**
-     * A custom exception for empty names.
+     * Converts a Roman numeral to a number.
+     * 
+     * @param string
+     * @return
+     * @throws IllegalArgumentException
      */
     public static Integer romanNumeralsToNumbers(String string) throws IllegalArgumentException {
 
