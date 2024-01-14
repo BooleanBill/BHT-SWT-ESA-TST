@@ -1,10 +1,15 @@
 package bht.swt.esa.tst;
 
+import java.util.Map;
+
 /**
  * A class that does everything.
  * 
  */
 public class ACDE {
+
+    private static final Map<Character, Integer> ROMAN = Map.of(
+            'I', 1, 'V', 5, 'X', 10, 'L', 50, 'C', 100, 'D', 500, 'M', 1000);
 
     /** a constructor that runs the methods */
     public ACDE() {
@@ -79,7 +84,8 @@ public class ACDE {
      * 
      * calculates a score from 0 to 100 for a given name, only accepts names with
      * length > 0 and not
-     * containing numbers or special characters other than spaces and dashes. (Sorry Elon Musk)
+     * containing numbers or special characters other than spaces and dashes. (Sorry
+     * Elon Musk)
      * 
      * @param name the name to be scored
      */
@@ -113,5 +119,38 @@ public class ACDE {
         public NoNameException(String errorMessage) {
             super(errorMessage);
         }
+    }
+
+    /**
+     * A custom exception for empty names.
+     */
+    public static Integer romanNumeralsToNumbers(String string) throws IllegalArgumentException {
+        for (char c : string.toCharArray()) {
+            if (!ROMAN.containsKey(c)) {
+                throw new IllegalArgumentException("Invalid Roman numeral: " + c);
+            }
+        }
+
+        // check for illegal numeral combinations
+        if (string.contains("VV") || string.contains("LL") || string.contains("DD") || string.contains("IIII")
+                || string.contains("XXXX") || string.contains("CCCC") || string.contains("MMMM")
+                || string.contains("IVI")) {
+            throw new IllegalArgumentException("Invalid Roman numeral: " + string);
+        }
+
+        int result = 0;
+
+        for (int i = 0; i < string.length(); i++) {
+            int current = ROMAN.get(string.charAt(i));
+            int next = i + 1 < string.length() ? ROMAN.get(string.charAt(i + 1)) : 0;
+            if (current >= next) {
+                result += current;
+            } else {
+                result -= current;
+            }
+        }
+
+        return result;
+
     }
 }
