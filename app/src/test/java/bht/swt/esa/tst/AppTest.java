@@ -18,10 +18,10 @@ class AppTest {
 
     @Test
     void testGetEmptyString() {
-        Acde acde = mock(Acde.class);
+        ACDE acde = mock(ACDE.class);
         when(acde.getEmptyString()).thenReturn("");
         assertTrue(acde.getEmptyString().isEmpty());
-        
+
     
     }
 }

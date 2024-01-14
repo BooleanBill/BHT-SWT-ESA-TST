@@ -4,10 +4,10 @@ package bht.swt.esa.tst;
  * A class that does everything.
  * 
  */
-public class Acde {
+public class ACDE {
 
     /** a constructor that runs the methods */
-    public Acde() {
+    public ACDE() {
         helloWorld();
     }
 
@@ -62,7 +62,7 @@ public class Acde {
     }
 
     /**
-     * Divides two floats and returns the result.
+     * Divides two floats.
      *
      * @param a the dividend
      * @param b the divisor
