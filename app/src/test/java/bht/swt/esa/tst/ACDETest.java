@@ -1,7 +1,5 @@
 package bht.swt.esa.tst;
 
-import static org.mockito.Mockito.*;
-
 import org.junit.jupiter.api.Test;
 import java.util.Random;
 

@@ -10,8 +10,11 @@ plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
     id 'jacoco'
-    id "org.sonarqube" version "4.4.1.3373"
+    id 'pmd'
 }
+
+sourceCompatibility = '17'
+targetCompatibility = '17'
 
 repositories {
     // Use Maven Central for resolving dependencies.
@@ -50,4 +53,10 @@ jacocoTestReport {
 }
 test {
     finalizedBy jacocoTestReport
+}
+
+pmd {
+    consoleOutput = true
+    rulesMinimumPriority = 5
+    ruleSets = ["category/java/errorprone.xml", "category/java/bestpractices.xml"]
 }

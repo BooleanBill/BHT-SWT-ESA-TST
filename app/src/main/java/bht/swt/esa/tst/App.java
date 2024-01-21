@@ -6,6 +6,9 @@ package bht.swt.esa.tst;
 public class App {
 
     public static void main(String[] args) {
+
+        //print java version
+        System.out.println("Java version: " + System.getProperty("java.version"));
         ACDE acde = new ACDE();
         TimeBasedAction timeBasedAction = new TimeBasedAction(new TimeProvider());
         System.out.println(timeBasedAction.greeting());
